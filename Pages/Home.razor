@@ -1,0 +1,122 @@
+﻿@page "/"
+
+<p>
+    To recreate bug, select value 2, 3, 4, or 5 from the dropdown. Then uncheck the value 1 checkbox. The dropdown value will change to value below it.
+</p>
+
+<h3>Available Values</h3>
+<div>
+    <label>
+        <InputCheckbox @bind-Value=IsValue1Available />
+        Value 1
+    </label>
+    <label>
+        <InputCheckbox @bind-Value=IsValue2Available />
+        Value 2
+    </label>
+    <label>
+        <InputCheckbox @bind-Value=IsValue3Available />
+        Value 3
+    </label>
+    <label>
+        <InputCheckbox @bind-Value=IsValue4Available />
+        Value 4
+    </label>
+    <label>
+        <InputCheckbox @bind-Value=IsValue5Available />
+        Value 5
+    </label>
+</div>
+<label>Select Value</label>
+<InputSelect @bind-Value=SelectedValue>
+    @foreach(var value in AvailableValues)
+    {
+        <option value="@value">@value</option>
+    }
+</InputSelect>
+
+@code {
+    private List<Values> AvailableValues { get; set; } = Enum.GetValues<Values>().ToList();
+
+    private Values SelectedValue { get; set; }
+
+    private bool IsValue1Available
+    {
+        get => AvailableValues.Contains(Values.Value1);
+        set
+        {
+            if (value)
+            {
+                AvailableValues.Add(Values.Value1);
+            }
+            else
+            {
+                AvailableValues.Remove(Values.Value1);
+            }
+        }
+    }
+
+    private bool IsValue2Available
+    {
+        get => AvailableValues.Contains(Values.Value2);
+        set
+        {
+            if (value)
+            {
+                AvailableValues.Add(Values.Value2);
+            }
+            else
+            {
+                AvailableValues.Remove(Values.Value2);
+            }
+        }
+    }
+
+    private bool IsValue3Available
+    {
+        get => AvailableValues.Contains(Values.Value3);
+        set
+        {
+            if (value)
+            {
+                AvailableValues.Add(Values.Value3);
+            }
+            else
+            {
+                AvailableValues.Remove(Values.Value3);
+            }
+        }
+    }
+
+    private bool IsValue4Available
+    {
+        get => AvailableValues.Contains(Values.Value4);
+        set
+        {
+            if (value)
+            {
+                AvailableValues.Add(Values.Value4);
+            }
+            else
+            {
+                AvailableValues.Remove(Values.Value4);
+            }
+        }
+    }
+
+    private bool IsValue5Available
+    {
+        get => AvailableValues.Contains(Values.Value5);
+        set
+        {
+            if (value)
+            {
+                AvailableValues.Add(Values.Value5);
+            }
+            else
+            {
+                AvailableValues.Remove(Values.Value5);
+            }
+        }
+    }
+}
