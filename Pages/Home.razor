@@ -1,7 +1,7 @@
 ﻿@page "/"
 
 <p>
-    To recreate bug, select value 2, 3, 4, or 5 from the dropdown. Then uncheck the value 1 checkbox. The dropdown value will change to value below it.
+    To recreate bug, select value 2, 3, 4, or 5 from the dropdown. Then uncheck the value 1 checkbox. The dropdown value will display the next value in the dropdown as it's value, but the actual value will remain the same.
 </p>
 
 <h3>Available Values</h3>
@@ -34,6 +34,7 @@
         <option value="@value">@value</option>
     }
 </InputSelect>
+<p style="margin-top: 2rem; font-weight:700;">Actual Selected Value: @SelectedValue</p>
 
 @code {
     private List<Values> AvailableValues { get; set; } = Enum.GetValues<Values>().ToList();
